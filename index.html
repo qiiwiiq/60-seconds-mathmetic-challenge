@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css">
+  <title>60 Seconds Challenge</title>
+</head>
+<body>
+  <div class="screen">
+    <div class="game-title">
+      <span class="game-title-time">60</span>
+      <span class="game-title-text">
+        <div>
+          <span>seconds</span>
+          <span class="game-title-char">
+            <span>+−×÷</span>
+            <span></span>
+          </span>
+        </div>
+        <div>challenge</div>
+      </span>
+    </div>
+    <button class="btn" id="start-btn">START!</button>
+    <div class="info">try to answer as much as you can</div>
+  </div>
+
+  <div class="screen" id="game-page">
+    <div class="game-container">
+      <div class="game-info">
+        <div class="game-info--left">
+          <div class="game-label">60 seconds challenge</div>
+          <div class="game-score">
+            <span class="game-label game-label--sub">score</span>
+            <span class="current-score" id="current-score">000</span>
+          </div>
+        </div>
+        <div id="time" class="time">01:00</div>
+      </div>
+      
+      <div class="exam">
+        <div class="question">
+          <span class="number" id="first-num">99</span>
+          <span class="char" id="operator">×</span>
+          <span class="number" id="second-num">9</span>
+          <span class="char">=</span>
+        </div>
+        <input type="number" min="0" autofocus class="answer-input" id="user-input">
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="screen" id="game-final">
+    <div class="game-label">60 seconds challenge</div>
+    <div class="game-final-text">
+      <span class="dash"></span>
+      your final score
+      <span class="dash"></span>
+    </div>
+    <div class="final-score" id="final-score">0</div>
+    <button class="btn" id="restart-btn">TRY AGAIN!</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
