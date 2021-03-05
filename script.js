@@ -1,4 +1,5 @@
 const screens = document.querySelectorAll('.screen');
+const paints = document.querySelectorAll('.paint');
 const gamePage = document.getElementById('game-page');
 const start_btn = document.getElementById('start-btn');
 const restart_btn = document.getElementById('restart-btn');
@@ -18,6 +19,19 @@ let seconds = 59;
 let score = 0;
 
 let correctAns = 0;
+
+initGame();
+
+function initGame() {
+  const color = localStorage.getItem('bg-color');
+  if (color) document.documentElement.style.setProperty('--main-color', color);
+}
+
+paints.forEach(paint => paint.addEventListener('click', (e) => {
+  const color = e.target.dataset.color;
+  document.documentElement.style.setProperty('--main-color', color);
+  localStorage.setItem('bg-color', color);
+}))
 
 start_btn.addEventListener('click', () => {
   gameStart = true;
@@ -106,8 +120,6 @@ function getRandom(min,max){
 };
 
 function checkAnswer() {
-  console.log('userAns', +userInput.value);
-  console.log('correctAns', correctAns);
   let userAns = +userInput.value;
   if (userAns === correctAns) {
     if (seconds >=21) score += 1;
