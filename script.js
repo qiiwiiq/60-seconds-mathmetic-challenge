@@ -3,6 +3,9 @@ const paints = document.querySelectorAll('.paint');
 const gamePage = document.getElementById('game-page');
 const start_btn = document.getElementById('start-btn');
 const restart_btn = document.getElementById('restart-btn');
+const correct_icon = document.getElementById('ic-correct');
+const wrong_icon = document.getElementById('ic-wrong');
+const score_gain = document.getElementById('score-gain');
 const timeEl = document.getElementById('time');
 const currentScoreEl = document.getElementById('current-score');
 const finalScoreEl = document.getElementById('final-score');
@@ -81,7 +84,7 @@ function createQuiz() {
     correctAns = num1 + num2;
   } else if (oper === '×') {
     num1 = createNum();
-    num2 = createNum();
+    num2 = getRandom(0, 9);
     correctAns = num1 * num2;
   } else if (oper === '−') {
     let nums = [createNum(), createNum()];
@@ -92,9 +95,6 @@ function createQuiz() {
     num2 = createNum();
     num1 = num2 * Math.floor(Math.random() * 10);
     correctAns = num1 / num2;
-  } else {
-    num1 = createNum();
-    num2 = createNum();
   }
 
   firstNum.innerText = num1;
@@ -122,10 +122,29 @@ function getRandom(min,max){
 function checkAnswer() {
   let userAns = +userInput.value;
   if (userAns === correctAns) {
-    if (seconds >=21) score += 1;
-    else score += 5;
+    correct_icon.style.transform = 'scale(1)';
+    setTimeout(() => {
+      correct_icon.style.transform = 'scale(0)';
+    }, 500)
+
+    if (seconds >=21) {
+      score += 1;
+      score_gain.innerText = '+1';
+    } else {
+      score += 5;
+      score_gain.innerText = '+5';
+    }
+
   } else {
-    if (score > 0) score -= 1;
+    wrong_icon.style.transform = 'scale(1)';
+    setTimeout(() => {
+      wrong_icon.style.transform = 'scale(0)';
+    }, 500)
+
+    if (score > 0) {
+      score -= 1;
+      score_gain.innerText = '-1';
+    }
     else score = 0;
   }
 
@@ -139,6 +158,11 @@ function checkAnswer() {
   }
 
   currentScoreEl.innerText = scoreText;
+  score_gain.style.transform = 'scaleY(1)';
+  setTimeout(() => {
+    score_gain.style.transformOrigin = 'top';
+    score_gain.style.transform = 'scaleY(0)';
+  }, 500)
 }
 
 function showResult() {

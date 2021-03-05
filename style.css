@@ -125,7 +125,7 @@ body {
 }
 
 .paint.yellow {
-  background-color: #FF9D00;
+  background-color: #e67e00;
 }
 
 .paint.green {
@@ -207,6 +207,15 @@ body {
   margin-left: 4px;
 }
 
+.score-gain {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #eee;
+  margin-left: 10px;
+  transform: scaleY(0);
+  transition: transform .1s ease;
+}
+
 .time {
   font-size: 5rem;
   font-weight: bold;
@@ -214,6 +223,7 @@ body {
 }
 
 .exam {
+  position: relative;
   display: flex;
   justify-content: space-between;
   font-size: 5rem;
@@ -240,6 +250,16 @@ body {
 
 .answer-input[type=number] {
   -moz-appearance: textfield;
+}
+
+.icon-answer-result {
+  position: absolute;
+  right: -70px;
+  font-size: 3rem;
+  color: #eee;
+  line-height: 6rem;
+  transform: scale(0);
+  transition: transform .1s linear;
 }
 
 .game-final-text {

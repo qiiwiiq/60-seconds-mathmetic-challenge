@@ -13,7 +13,7 @@
       <div class="icon-paint ">
         <i class="fas fa-paint-roller"></i>
       </div>
-      <div class="paint yellow" data-color="#FF9D00"></div>
+      <div class="paint yellow" data-color="#e67e00"></div>
       <div class="paint green" data-color="#2ca841"></div>
       <div class="paint blue" data-color="#516dff"></div>
     </div>
@@ -42,6 +42,7 @@
           <div class="game-score">
             <span class="game-label game-label--sub">score</span>
             <span class="current-score" id="current-score">000</span>
+            <span class="score-gain" id="score-gain"></span>
           </div>
         </div>
         <div id="time" class="time">01:00</div>
@@ -55,6 +56,8 @@
           <span class="char">=</span>
         </div>
         <input type="number" min="0" autofocus class="answer-input" id="user-input">
+        <i class="fas fa-check icon-answer-result" id="ic-correct"></i>
+        <i class="fas fa-times icon-answer-result" id="ic-wrong"></i>
       </div>
     </div>
   </div>
