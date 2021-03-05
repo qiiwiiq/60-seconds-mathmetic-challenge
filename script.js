@@ -9,6 +9,7 @@ const score_gain = document.getElementById('score-gain');
 const timeEl = document.getElementById('time');
 const currentScoreEl = document.getElementById('current-score');
 const finalScoreEl = document.getElementById('final-score');
+const finalResultEl = document.getElementById('final-result');
 
 const firstNum = document.getElementById('first-num');
 const secondNum = document.getElementById('second-num');
@@ -20,6 +21,9 @@ const operators = ['+', '−', '×', '÷'];
 let gameStart = false;
 let seconds = 59;
 let score = 0;
+let quizzes = 0;
+let quiz_correct = 0;
+let quiz_wrong = 0;
 
 let correctAns = 0;
 
@@ -120,8 +124,12 @@ function getRandom(min,max){
 };
 
 function checkAnswer() {
+  quizzes++;
+
   let userAns = +userInput.value;
   if (userAns === correctAns) {
+    quiz_correct++;
+
     correct_icon.style.transform = 'scale(1)';
     setTimeout(() => {
       correct_icon.style.transform = 'scale(0)';
@@ -136,6 +144,8 @@ function checkAnswer() {
     }
 
   } else {
+    quiz_wrong++;
+
     wrong_icon.style.transform = 'scale(1)';
     setTimeout(() => {
       wrong_icon.style.transform = 'scale(0)';
@@ -168,5 +178,14 @@ function checkAnswer() {
 function showResult() {
   gamePage.classList.add('up');
   finalScoreEl.innerText = score;
+  finalResultEl.innerHTML = `
+    <div>You have answered ${quizzes} quizzes</div>
+    <div>
+      <i class="fas fa-check"></i> Answered correct: ${quiz_correct}
+    </div>
+    <div>
+      <i class="fas fa-times"></i> Answered incorrect: ${quiz_wrong}
+    </div>
+  `
 }
 
