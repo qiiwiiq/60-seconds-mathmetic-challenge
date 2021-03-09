@@ -96,7 +96,7 @@ function createQuiz() {
     num2 = Math.min(...nums);
     correctAns = num1 - num2;
   } else if (oper === '÷') {
-    num2 = createNum();
+    num2 = createNum('noZero');
     num1 = num2 * Math.floor(Math.random() * 10);
     correctAns = num1 / num2;
   }
@@ -106,10 +106,11 @@ function createQuiz() {
   operator.innerText = oper;
 }
 
-function createNum() {
+function createNum(rule) {
   let num;
   if (seconds >= 41) {
-    num = getRandom(0, 9);
+    if (rule === 'noZero') num = getRandom(1, 9);
+    else num = getRandom(0, 9);
   } else if (seconds >=21) {
     num = getRandom(10, 99);
   } else {
