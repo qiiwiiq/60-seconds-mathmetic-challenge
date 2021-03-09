@@ -14,7 +14,7 @@ const finalResultEl = document.getElementById('final-result');
 const firstNum = document.getElementById('first-num');
 const secondNum = document.getElementById('second-num');
 const operator = document.getElementById('operator');
-const userInput = document.getElementById('user-input');
+const answerInput = document.getElementById('answer-input');
 
 const operators = ['+', '−', '×', '÷'];
 
@@ -50,7 +50,7 @@ window.addEventListener('keydown', (event) => {
   if (gameStart && event.code === 'Enter') {
     checkAnswer();
     createQuiz();
-    userInput.value = null;
+    answerInput.value = null;
   };
 });
 
@@ -127,7 +127,7 @@ function getRandom(min,max){
 function checkAnswer() {
   quizzes++;
 
-  let userAns = +userInput.value;
+  let userAns = +answerInput.value;
   if (userAns === correctAns) {
     quiz_correct++;
 
